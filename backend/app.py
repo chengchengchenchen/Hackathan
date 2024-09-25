@@ -59,8 +59,9 @@ def get_user_data():
             conn.close()
 
 
-openai.api_key = "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"
+# openai.api_key = "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"
 
+openai.api_key = 'Your_Key'
 
 def analyze_power_consumption(user):
     # Connect to the database and retrieve the user's data

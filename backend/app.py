@@ -2,12 +2,13 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import openai
 import sqlite3
-
+import os
 app = Flask(__name__)
 CORS(app)
 # Database file name
 db_name = 'appliances.db'
 
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Get appliance usage data for a specific user, sorted in ascending order by timestamp
 @app.route('/data', methods=['GET'])
@@ -58,10 +59,6 @@ def get_user_data():
         if conn:
             conn.close()
 
-
-# openai.api_key = "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"
-
-openai.api_key = 'Your_Key'
 
 def analyze_power_consumption(user):
     # Connect to the database and retrieve the user's data
